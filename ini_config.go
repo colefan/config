@@ -135,6 +135,26 @@ func (ini *IniConfig) Int64(key string) (int64, error) {
 
 }
 
+//UInt64 get uint64 val
+func (ini *IniConfig) UInt64(key string) (uint64, error) {
+	strVal := ini.getStringValue(key)
+	return strconv.ParseUint(strVal, 10, 64)
+}
+
+//UInt32 get uint32 val
+func (ini *IniConfig) UInt32(key string) (uint32, error) {
+	strVal := ini.getStringValue(key)
+	v, err := strconv.ParseUint(strVal, 10, 32)
+	return uint32(v), err
+}
+
+//Int32 get int32 val
+func (ini *IniConfig) Int32(key string) (int32, error) {
+	strVal := ini.getStringValue(key)
+	v, err := strconv.ParseInt(strVal, 10, 32)
+	return int32(v), err
+}
+
 //Float get float64 val
 func (ini *IniConfig) Float(key string) (float64, error) {
 	strVal := ini.getStringValue(key)
